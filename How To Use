@@ -1,0 +1,5 @@
+เมื่อไฟล์ทุกอย่างโอเคแล้ว
+docker-compose up -d # เริ่มใช้งาน container ทั้งหมดใน background
+
+เมื่อต้องการเลิกใช้งาน
+docker-compose down # หยุดและลบ container ทั้งหมด
