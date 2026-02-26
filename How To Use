@@ -1,3 +1,6 @@
+เริ่มแรกให้โหลด node_modules โดยการ ใช้คำสั่ง
+docker-compose up --build # สร้าง image และ container ใหม่จาก Dockerfile และ docker-compose.yml
+
 เมื่อไฟล์ทุกอย่างโอเคแล้ว
 docker-compose up -d # เริ่มใช้งาน container ทั้งหมดใน background
 

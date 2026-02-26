@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* ถ้าคุณต้องการกำหนดค่าเริ่มต้นให้ Body สามารถเขียนต่อท้ายได้เลย */
-body {
-  @apply bg-slate-900 text-white;
-}
+/* body {
+  @apply bg-gray-100 text-gray-800;
+} */
