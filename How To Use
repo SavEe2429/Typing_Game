@@ -20,3 +20,25 @@ cd ../frontend
 npm install
 
 npm run dev
+
+
+; สร้างรูปแบบใน src
+; mkdir src\api
+; mkdir src\assets
+; mkdir src\components\common
+; mkdir src\components\game
+; mkdir src\hooks
+; mkdir src\layouts
+; mkdir src\pages
+; mkdir src\store
+; mkdir src\types
+; mkdir src\utils
+
+; type nul > src\api\axios.ts
+; type nul > src\hooks\useTyping.ts
+; type nul > src\store\authStore.ts
+; type nul > src\types\index.ts
+; type nul > src\utils\formatTime.ts
+; type nul > src\pages\Home.tsx
+; type nul > src\pages\Leaderboard.tsx
+; type nul > src\pages\Profile.tsx
