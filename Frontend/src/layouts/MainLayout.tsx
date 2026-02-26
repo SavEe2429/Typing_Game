@@ -12,6 +12,7 @@ export const MainLayout = () => {
             {/* ส่วนเนื้อหา */}
             <main className='flex-grow bg-[#1A1A1C]'>
                 {/* 3. ใส่ Outlet ไว้ตรงนี้! เปรียบเสมือน "พื้นที่ว่าง" ให้หน้าอื่นๆ มาเสียบ */}
+                
                 <Outlet />
             </main>
 
