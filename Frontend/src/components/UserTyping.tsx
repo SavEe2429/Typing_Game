@@ -1,8 +1,11 @@
 const UserTyping = ({ 
     targetText, 
-    userInput }: {
+    userInput,
+    errorIndex
+  }: {
       targetText: string;
       userInput: string;
+      errorIndex?: number | null;
     }) => {
   const characters = targetText.split('');
 
@@ -17,6 +20,10 @@ const UserTyping = ({
         }
 
         const isCurrentInput = index === userInput.length;
+
+        if (isCurrentInput && index === errorIndex) {
+            colorInput = 'text-red-300';
+        }
 
         return (
           <span

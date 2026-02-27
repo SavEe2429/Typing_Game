@@ -4,7 +4,7 @@ export const ProgressBar = ({
     }) => {
 
     return (
-        <div className="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs">
+        <div className="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs">
             <div className="w-full max-w-4xl">
                 {/* พื้นหลังของ Progress Bar */}
                 <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
