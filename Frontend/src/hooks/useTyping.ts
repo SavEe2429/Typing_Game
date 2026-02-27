@@ -1,9 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 
-export const useTyping = () => {
+export const useTyping = (targetText: string) => {
   const [userInput, setUserInput] = useState<string>('');
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
+
+    if (!targetText) return;
+
     if (e.key === ' ') {
       e.preventDefault();
     }
@@ -16,7 +19,7 @@ export const useTyping = () => {
     if (e.key.length === 1) {
       setUserInput((prev) => prev + e.key);
     }
-  }, []);
+  }, [targetText]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
