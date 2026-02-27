@@ -1,5 +1,5 @@
-import { CustomMode } from "../components/common/Custom"
-import { QuickPlayMode } from "../components/common/QuickPlay"
+import { CustomMode, QuickPlayMode } from "../components/common/GameMode"
+
 
 export const HomePage = () => {
     return (

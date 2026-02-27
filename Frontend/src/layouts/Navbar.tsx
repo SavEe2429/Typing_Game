@@ -65,7 +65,7 @@ export const Navbar = () => {
                                     onLogout={() => { setIsLogin(false); setIsProfileOpen(false); }}
                                 />
                             ) : (
-                                <SignInButton Click={() => setIsLogin(true)} />
+                                <SignInButton  />
                             )}
 
                         </div>
