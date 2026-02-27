@@ -30,7 +30,8 @@ export const CustomMode = () => {
                 <ModeButton 
                     icon={<Book size={20} className="text-blue-400" />} 
                     label="Custom" 
-                    hoverColor="hover:bg-blue-500/20 hover:bg-blue-500/30" 
+                    hoverColor="hover:bg-blue-500/20 hover:bg-blue-500/30"
+                    path="/custom"
                 />
             </div>
         </div>

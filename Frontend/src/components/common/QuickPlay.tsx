@@ -30,7 +30,8 @@ export const QuickPlayMode = () => {
                 <ModeButton 
                     icon={<Shuffle size={20} className="text-teal-400" />} 
                     label="RANDOM" 
-                    hoverColor="hover:bg-teal-500/10 hover:border-teal-500/30" 
+                    hoverColor="hover:bg-teal-500/10 hover:border-teal-500/30"
+                    path="/game"
                 />
             </div>
         </div>

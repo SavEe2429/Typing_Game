@@ -1,4 +1,4 @@
-export const Ranking = () => {
+export const RankingPage = () => {
     return (
         <>
         </>

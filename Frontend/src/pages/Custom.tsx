@@ -1,4 +1,4 @@
-export const GamePage = () => {
+export const CustomPage = () => {
     return (
         <>
         
