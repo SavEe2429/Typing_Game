@@ -10,7 +10,7 @@ export const MainLayout = () => {
             <Navbar/>
 
             {/* ส่วนเนื้อหา */}
-            <main className='flex-grow bg-[#1A1A1C]'>
+            <main className='flex flex-grow bg-[#1A1A1C] justify-center'>
                 {/* 3. ใส่ Outlet ไว้ตรงนี้! เปรียบเสมือน "พื้นที่ว่าง" ให้หน้าอื่นๆ มาเสียบ */}
                 
                 <Outlet />
