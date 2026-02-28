@@ -8,15 +8,15 @@ import { CountdownTimer } from "../components/game/CountdownTimer";
 
 export const GamePage = () => {
 
-    const { words, countdown, isGameReady, startTime, endTime, setEndTime, restartGame } = useGameEngine(25);
+    const { words, countdown, isGameReady, startTime, endTime, finishGame, restartGame } = useGameEngine(25);
     const { userInput, totalKeystrokes, errorCount, errorIndex, wrongWords, resetTyping } = useTyping(isGameReady ? words : "");
 
     //เมื่อพิมพ์ครบ 25 คำ จะบันทึกเวลา
     useEffect(() => {
         if (userInput.length === words.length) {
-            setEndTime(Date.now())
+            finishGame()
         }
-    }, [userInput, words, setEndTime])
+    }, [userInput, words, finishGame])
 
     //เมื่อกดปุ่ม play again
     const handlePlayAgain = () => {
@@ -26,9 +26,8 @@ export const GamePage = () => {
 
     return (
         <>
-
             <div className="flex flex-col min-h-screen p-4">
-                <main className='flex flex-grow bg-[#1A1A1C] items-center justify-center items-start px-6 sm:px-8'>
+                <main className="flex flex-grow bg-[#1A1A1C] items-center justify-center items-start px-6 sm:px-8">
 
                     {/* ส่งค่าไปให้ summary เมื่อจบเกม */}
                     {endTime && startTime ? (

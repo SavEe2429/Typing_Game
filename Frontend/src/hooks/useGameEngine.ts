@@ -22,6 +22,11 @@ export const useGameEngine = (wordCount: number) => {
         }
     }, [countdown, isGameReady])
 
+    //เก็บเวลาเมื่อ finish
+    const finishGame = useCallback(() => {
+        setEndTime(Date.now());
+    }, []);
+
     //ฟังก์ชันสำหรับปุ่ม Play Again
     const restartGame = useCallback(() => {
         updateWords(); //สั่งให้สุ่มคำชุดใหม่จาก useWords
@@ -37,7 +42,7 @@ export const useGameEngine = (wordCount: number) => {
         isGameReady,
         startTime,
         endTime,
-        setEndTime,
+        finishGame,
         restartGame
     };
 

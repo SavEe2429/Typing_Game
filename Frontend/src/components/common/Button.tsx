@@ -7,8 +7,6 @@ interface VaribleButton{
     path : string;
 }
 
-
-
 export const ModeButton = ({icon, label, hoverColor, path }: VaribleButton) => {
     const navigate = useNavigate();
     return (
