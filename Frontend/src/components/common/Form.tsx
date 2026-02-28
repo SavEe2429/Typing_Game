@@ -1,20 +1,28 @@
 import { ModeButton } from "./Button";
 
 interface AuthInputProps {
-  icon: any;
-  type: string;
-  placeholder: string;
+  icon: any,
+  type: string,
+  placeholder: string,
+  name: string,
+  register: any,
+  error?: any
 }
 
-export const AuthInput = ({ icon: Icon, type, placeholder }: AuthInputProps) => (
-  <div className="relative w-full">
-    <Icon className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 size-5" />
-    <input
-      type={type}
-      placeholder={placeholder}
-      className="w-full bg-[#1A1A1C] border border-white/5 rounded-xl py-4 pl-12 pr-4 text-sm sm:text-base text-white placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
-    />
+export const AuthInput = ({ icon: Icon, type, placeholder, name, register, error }: AuthInputProps) => (
+  <div className="relative w-full flex flex-col"> 
+    <div className="flex items-center justify-center">
+      <Icon className="shrink-0 absolute left-4 text-gray-500 size-5" />
+      <input
+        {...register(name)}
+        type={type}
+        placeholder={placeholder}
+        className="w-full max-w-xl bg-[#1A1A1C] border border-white/5 rounded-xl py-4 pl-12 pr-4 text-sm sm:text-base text-white placeholder:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
+      />
+    </div>
+    {error && <span className="text-red-500 text-l ml-2 mt-2">{error.message}</span>}
   </div>
+
 );
 
 

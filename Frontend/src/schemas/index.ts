@@ -1,6 +1,5 @@
 import { z } from 'zod'
 
-
 // login and register schema
 
 export const loginSchema = z.object({
@@ -12,19 +11,21 @@ export const registerSchema = loginSchema.extend({
     username: z.string().min(1, 'ตั้งชื่ออย่างน้อย 1 ตัว'),
     confirmPassword: z.string()
 }).refine((data) => data.password === data.confirmPassword, {
-    message:"รหัสผ่านไม่ถูกต้อง",
+    message: "รหัสผ่านไม่ถูกต้อง",
     path: ["confirmPassword"],
 });
 
 // game schemas
 export const gameSchema = z.object({
-    wpm : z.number(),
-    accuracy : z.number().min(0).max(100),
-    characters : z.number(),
+    wpm: z.number(),
+    accuracy: z.number().min(0).max(100),
+    characters: z.number(),
     errors: z.number(),
-    timeSeconds : z.number(),
+    timeSeconds: z.number(),
 });
 
-export type loginForm = z.infer<typeof loginSchema>
+export type LoginForm = z.infer<typeof loginSchema>
 export type RegisterForm = z.infer<typeof registerSchema>
 export type GameVar = z.infer<typeof gameSchema>
+
+

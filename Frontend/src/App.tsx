@@ -8,7 +8,7 @@ import { CustomPage } from './pages/Custom'
 import { LoginPage } from './pages/Login'
 import { RegisterPage } from './pages/Register'
 import { ForgetPassPage } from './pages/ForgetPass'
-import { AuthLayout } from './layouts/authLayout'
+import { AuthLayout } from './layouts/AuthLayout'
 
 
 function App() {
