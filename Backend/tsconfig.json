@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                /* แปลงเป็น JS เวอร์ชันใหม่ที่ Node.js เข้าใจ */
+    "module": "CommonJS",              /* รูปแบบ Module สำหรับ Node.js */
+    "outDir": "./dist",                /* โฟลเดอร์สำหรับไฟล์ที่แปลเสร็จแล้ว */
+    "rootDir": "./src",                /* ตำแหน่งโค้ด TS ของเรา */
+    "strict": true,                    /* เปิดโหมดเข้มงวดเพื่อลดบัค */
+    "esModuleInterop": true,           /* ช่วยให้ Import Library อย่าง express ได้ง่ายขึ้น */
+    "skipLibCheck": true,              /* ข้ามการตรวจไฟล์ของ Library เพื่อให้รันเร็วขึ้น */
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"],             /* ตรวจเฉพาะไฟล์ใน src */
+  "exclude": ["node_modules"]          /* ไม่ต้องตรวจใน node_modules */
+}
