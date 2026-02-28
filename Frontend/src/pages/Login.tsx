@@ -1,6 +1,10 @@
 import { Mail, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
-import { AuthDivider, AuthInput, GoogleLogin } from "../components/common/form";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { AuthDivider, AuthInput, GoogleLogin } from "../components/common/Form";
+import { api } from "../api/axios";
+import { loginSchema, type LoginForm } from "../schemas";
 
 
 export const LoginPage = () => {
