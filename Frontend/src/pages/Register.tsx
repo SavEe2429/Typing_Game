@@ -1,7 +1,9 @@
 import { Mail, Lock, UserRound } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AuthDivider, AuthInput, GoogleLogin } from "../components/common/Form";
-import type { RegisterForm } from "../schemas";
+import { registerSchema, type RegisterForm } from "../schemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from 'react-hook-form'
 import { api } from "../api/axios";
 
 
