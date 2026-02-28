@@ -1,6 +1,6 @@
 import { Mail, Lock ,UserRound} from "lucide-react";
 import { Link } from "react-router-dom";
-import { AuthDivider, AuthInput, GoogleLogin } from "../components/common/form";
+import { AuthDivider, AuthInput, GoogleLogin } from "../components/common/Form";
 
 
 export const RegisterPage = () => {

@@ -4,8 +4,8 @@ interface StatisticCardProps {
   unit?: string;
 }
 
-export const StatisticCard = ({ label, value, unit }: StatisticCardProps) => (
-  <div className="bg-[#252527] p-6 rounded-3xl border border-white/5 shadow-lg flex flex-col justify-center items-center text-center transition-all hover:border-indigo-500/30">
+const StatisticCard = ({ label, value, unit }: StatisticCardProps) => (
+  <div className="bg-[#252527] p-6 rounded-3xl border border-gray-700/50 shadow-lg flex flex-col justify-center items-center text-center">
     <p className="text-white font-bold uppercase text-[11px] tracking-wider mb-2 leading-tight">
       {label}
     </p>

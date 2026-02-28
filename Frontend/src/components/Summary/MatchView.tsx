@@ -3,8 +3,8 @@ interface MatchViewProps {
   wrongWords: number[];
 }
 
-export const MatchView = ({ targetWords, wrongWords }: MatchViewProps) => (
-  <div className="col-span-2 bg-[#252527] p-8 rounded-3xl shadow-lg flex flex-wrap content-start gap-x-3 gap-y-2 text-xl font-mono leading-relaxed min-h-[320px] border border-white/5">
+const MatchView = ({ targetWords, wrongWords }: MatchViewProps) => (
+  <div className="col-span-2 bg-[#252527] p-8 rounded-3xl shadow-lg flex flex-wrap content-start gap-x-3 gap-y-2 text-xl font-mono leading-relaxed min-h-[320px] border border-gray-700/50 tracking-wide">
     {targetWords.map((word, i) => {
       const isMistaken = wrongWords.includes(i);
       return (

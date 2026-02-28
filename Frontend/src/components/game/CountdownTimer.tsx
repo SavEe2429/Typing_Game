@@ -1,4 +1,4 @@
-export const CountdownOverlay = ({ count }: { count: number;}) => {
+export const CountdownTimer = ({ count }: { count: number;}) => {
     // ถ้าเวลานับถอยหลังหมดแล้ว (เป็น 0) ก็ไม่ต้องแสดงผล Component นี้
     if (count <= 0) return null;
 

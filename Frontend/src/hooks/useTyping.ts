@@ -5,7 +5,7 @@ export const useTyping = (targetText: string) => {
 
   // state เอาไว้สำหรับเก็บจำนวนครั้งที่กดคีย์บอร์ด เพื่อคำนวน mistake
   const [totalKeystrokes, setTotalKeystrokes] = useState(0)
-  const [errorCount, seterrorCount] = useState(0)
+  const [errorCount, setErrorCount] = useState(0)
   const [errorIndex, setErrorIndex] = useState<number | null>(null);
   const [wrongWords, setWrongWords] = useState<number[]>([]);
 
@@ -29,7 +29,7 @@ export const useTyping = (targetText: string) => {
           setUserInput((prev) => prev + e.key)
           setErrorIndex(null);
         } else {
-          seterrorCount((prev) => prev + 1) //นับจำนวนครั้งที่กดตัวอักษรผิด
+          setErrorCount((prev) => prev + 1) //นับจำนวนครั้งที่กดตัวอักษรผิด
           setErrorIndex(userInput.length); //ระบุตำแหน่งที่ผิด
 
           //เก็บ index คำที่ผิดไปโชว์ที่ matchview
@@ -43,7 +43,6 @@ export const useTyping = (targetText: string) => {
 
       }
     }
-
   }, [targetText, userInput.length]);
 
   useEffect(() => {
@@ -54,5 +53,20 @@ export const useTyping = (targetText: string) => {
     };
   }, [handleKeyDown])
 
-  return { userInput, totalKeystrokes, errorCount, errorIndex, wrongWords }
+  const resetTyping = useCallback(() => {
+    setUserInput("");
+    setTotalKeystrokes(0);
+    setErrorCount(0);
+    setErrorIndex(null);
+    setWrongWords([]);
+  }, []);
+
+  return {
+    userInput,
+    totalKeystrokes,
+    errorCount,
+    errorIndex,
+    wrongWords,
+    resetTyping
+  }
 };
