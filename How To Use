@@ -39,6 +39,8 @@ db.users.updateOne(
   { email: "nongsafgml@gmail.com" }, 
   { $set: { username: "NewName" } }
 )
+
+ db.users.updateOne({id:2} , {$set : {role :  'ADMIN'}})
 --------------------------------------------------------------------------------------------
 
 รันแบบ ปกติ
