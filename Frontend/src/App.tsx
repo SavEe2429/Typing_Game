@@ -9,6 +9,7 @@ import { LoginPage } from './pages/Login'
 import { RegisterPage } from './pages/Register'
 import { ForgetPassPage } from './pages/ForgetPass'
 import { AuthLayout } from './layouts/AuthLayout'
+import { DashBoardPage } from './pages/DashBoard'
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='game' element={<GamePage />} />
         <Route path='profile' element={<ProfilePage />} />
         <Route path='custom' element={<CustomPage />} />
+        <Route path='dashboard' element={<DashBoardPage />} />
 
       </Route>
 

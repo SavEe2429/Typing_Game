@@ -1,34 +1,42 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { UserProfile, SignInButton } from "../components/common/ButtonNav";
+import { set } from "zod";
 
-const navItems = [
-    { name: 'Play', path: '/' },
-    { name: 'Ranking', path: '/ranking' }
-]
+
 
 export const Navbar = () => {
     const [isTelMenuOpen, setIsTelMenuOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isLogin, setIsLogin] = useState(false); // เก็บไว้ใช้ภายหลัง
-    const [username , setUsername] = useState("");
+    const [username, setUsername] = useState("");
+    const [role, setRole] = useState("");
     const location = useLocation();
 
     useEffect(() => {
         const token = localStorage.getItem('accessToken');
         const username = localStorage.getItem('userName')
-        if(username) setUsername(username)
-        if(token) {
+        const role = localStorage.getItem('Role')
+        if (role) setRole(role);
+        if (username) setUsername(username);
+        if (token) {
             setIsLogin(true);
         }
     }, [])
 
+    const navItems = [
+        { name: 'Play', path: '/' },
+        { name: 'Ranking', path: '/ranking' },
+        ...(role === 'ADMIN' ? [{ name: 'DashBoard', path: '/dashboard' }] : [])
+    ];
+
+
     const isActive = (path: string) => location.pathname === path;
 
     const handleLogout = () => {
-        setIsLogin(false); 
-        setIsProfileOpen(false); 
-        localStorage.removeItem('accessToken'); 
+        setIsLogin(false);
+        setIsProfileOpen(false);
+        localStorage.removeItem('accessToken');
         localStorage.removeItem('userName')
         localStorage.removeItem('Role')
         window.location.href = '/'
@@ -81,11 +89,11 @@ export const Navbar = () => {
                                 <UserProfile
                                     isOpen={isProfileOpen}
                                     onToggle={() => setIsProfileOpen(!isProfileOpen)}
-                                    onLogout={handleLogout }
+                                    onLogout={handleLogout}
                                     username={username}
                                 />
                             ) : (
-                                <SignInButton/>
+                                <SignInButton />
                             )}
 
                         </div>
