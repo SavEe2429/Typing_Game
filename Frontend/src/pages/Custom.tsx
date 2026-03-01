@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { CustomInputText } from "../components/custom/CustomInputText";
 import { ProgressBar } from "../components/game/Progress";
-import { Summary } from "../components/Summary/Summary";
+import { Summary } from "../components/summary/Summary";
 import { CountdownTimer } from "../components/game/CountdownTimer";
 import { useTyping } from "../hooks/useTyping";
 import { TypingBoard } from "../components/game/TypingBoard";
