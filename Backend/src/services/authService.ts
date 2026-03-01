@@ -27,3 +27,30 @@ export const loginService = async (Credential: any) => {
 
     return {token , user : {email : user.email , role : user.role}}
 }
+
+export const registerService = async (userData : any) => {
+    // check email has be existing
+    const existingEmail = await User.findOne({email : userData.email});
+    if(existingEmail)
+    {
+        throw new Error("Email is already available");
+    }
+
+    // hashing before record
+    const hashedPass = await bcrypt.hash(userData.password , 10); // 10 คือ saltRounds = ค่ากำหนดว่ารหัสจะยากง่ายยิ่งเยอะยิ่งยาก
+
+    const newUser = new User({
+        ...userData,
+        password : hashedPass
+    });
+
+    await newUser.save();
+
+    return {
+        id : newUser._id,
+        username : newUser.username,
+        email : newUser.email,
+        role : newUser.role
+    };
+
+}
