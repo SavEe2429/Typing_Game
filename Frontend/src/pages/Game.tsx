@@ -4,7 +4,7 @@ import { useTyping } from "../hooks/useTyping";
 import { ProgressBar } from "../components/game/Progress";
 import { TypingBoard } from "../components/game/TypingBoard";
 import { CountdownTimer } from "../components/game/CountdownTimer";
-import { Summary } from "../components/Summary/Summary";
+import { Summary } from "../components/summary/Summary";
 
 export const GamePage = () => {
 
@@ -18,7 +18,7 @@ export const GamePage = () => {
         }
     }, [userInput, words, finishGame])
 
-    //เมื่อกดปุ่ม play again
+    //ปุ่ม play again
     const handlePlayAgain = () => {
         restartGame();
         resetTyping();
