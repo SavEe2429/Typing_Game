@@ -62,10 +62,12 @@ export const Navbar = () => {
                                 <UserProfile
                                     isOpen={isProfileOpen} 
                                     onToggle={() => setIsProfileOpen(!isProfileOpen)} 
-                                    onLogout={() => { setIsLogin(false); setIsProfileOpen(false); }}
+                                    onLogout={() => { setIsLogin(!isLogin); setIsProfileOpen(false); }}
                                 />
                             ) : (
-                                <SignInButton  />
+                                <SignInButton  
+                                onLogin={setIsLogin(!isLogin)}
+                                />
                             )}
 
                         </div>

@@ -1,5 +1,5 @@
 import { Mail, Lock } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AuthDivider, AuthInput, GoogleLogin } from "../components/common/Form";
@@ -9,13 +9,14 @@ import { loginSchema, type LoginForm } from "../schemas";
 
 export const LoginPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>({ resolver: zodResolver(loginSchema) })
-
+  const navigate = useNavigate();
   const onSubmit = async (data: LoginForm) => {
     try {
       const res = await api.post('/auth/login', data);//ส่งข้อมูลไปที่ login
       if (res.status === 200) {
         console.log("Login Successed", res.data);
         localStorage.setItem('accessToken', res.data.token);
+        navigate('/');
       }
     } catch (err: any) {
       const message = err.response?.data?.message || "Invalid";

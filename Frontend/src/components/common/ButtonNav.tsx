@@ -12,14 +12,14 @@ export const UserProfile = ({ isOpen, onToggle, onLogout }: any) => (
             <div className="absolute right-0 z-10 mt-3 w-56 origin-top-right rounded-xl bg-white py-2 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none overflow-hidden">
                 <Link to="/profile" onClick={onToggle} className="block px-4 py-3 text-lg text-gray-700 hover:bg-gray-100 font-medium">Your Profile</Link>
                 <hr className="border-gray-100" />
-                <button onClick={onLogout} className="block w-full text-left px-4 py-3 text-lg text-red-600 hover:bg-red-50 font-bold">Sign out</button>
+                <button onClick={onLogout} className="block w-full text-left px-4 py-3 text-lg text-red-600 hover:bg-red-50 font-bold">Sign Out</button>
             </div>
         )}
     </>
 );
 
-export const SignInButton = () => (
-    <Link to='/auth' className="flex items-center gap-2 text-white text-xl font-bold hover:text-indigo-400 transition-colors uppercase tracking-wider">
+export const SignInButton = (onLogin : any) => (
+    <Link onClick={onLogin} to='/auth' className="flex items-center gap-2 text-white text-xl font-bold hover:text-indigo-400 transition-colors uppercase tracking-wider">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="size-7">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12" />
         </svg>

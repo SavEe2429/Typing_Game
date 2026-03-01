@@ -20,7 +20,7 @@ docker-compose logs backend
 docker ps
 
 เข้า mongosh
-docker exec -it typing_game-mongodb-1 mongosh
+docker exec -it typing_game-mongodb-1 mongosh || docker compose exec mongodb mongosh
 
 ดู db
 show dbs
@@ -33,6 +33,12 @@ show collection
 
 ดู data 
 db.ชื่อ collection.find()  //db.users.find()
+
+อัปเดตข้อมูล
+db.users.updateOne(
+  { email: "nongsafgml@gmail.com" }, 
+  { $set: { username: "NewName" } }
+)
 --------------------------------------------------------------------------------------------
 
 รันแบบ ปกติ
