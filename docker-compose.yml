@@ -15,9 +15,11 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - MONGO_URI=mongodb://mongodb:27017/typing_game
-      - JWT_SECRET=your_super_secret_key
+      - DATABASE_URL=mongodb://mongodb:27017/TypingGame
+      - JWT_SECRET=3abc1485a33948924faf95b362002ac0d1e369e7abacde9da737f687c7fde318
       - PORT=5000
+      - JWT_EXPIRES_IN=1d
+      - FRONTEND_URL=http://localhost:5173
       - CHOKIDAR_USEPOLLING=true # เพิ่มบรรทัดนี้: ช่วยให้ Node.js ตรวจจับไฟล์แก้บน Windows ได้ชัวร์ขึ้น
     depends_on:
       - mongodb

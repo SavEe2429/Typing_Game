@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useGameEngine } from "../hooks/useGameEngine";
 import { useTyping } from "../hooks/useTyping";
-import { Summary } from "../components/summary/Summary";
 import { ProgressBar } from "../components/game/Progress";
 import { TypingBoard } from "../components/game/TypingBoard";
 import { CountdownTimer } from "../components/game/CountdownTimer";
+import { Summary } from "../components/Summary/Summary";
 
 export const GamePage = () => {
 
