@@ -65,7 +65,7 @@ export const CustomPage = () => {
                                     className="mt-4 text-gray-500 hover:text-white underline transition-colors">Change Custom Text</button>
                             </div>
                         ) : (
-                            <div className="flex flex-col w-full max-w-5xl gap-6 relative">
+                            <div className="flex flex-col w-full max-w-5xl gap-4">
                                 <CountdownTimer count={countdown} />
 
                                 <div className="flex gap-8 w-full justify-center pb-3">
