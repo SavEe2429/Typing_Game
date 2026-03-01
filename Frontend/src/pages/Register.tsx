@@ -16,7 +16,7 @@ export const RegisterPage = () => {
       console.log("Register Successful");
       navigate('/auth');
     } catch (err: any) {
-      const message = err.response?.data?.message || "Invalid";
+      const message = err.response?.data?.message;
       alert(message);
     }
   }

@@ -16,6 +16,7 @@ export const LoginPage = () => {
       if (res.status === 200) {
         console.log("Login Successed", res.data);
         localStorage.setItem('accessToken', res.data.token);
+        localStorage.setItem('userName',res.data.user.username);
         navigate('/');
       }
     } catch (err: any) {

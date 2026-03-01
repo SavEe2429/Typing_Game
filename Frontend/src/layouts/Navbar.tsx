@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { UserProfile, SignInButton } from "../components/common/ButtonNav";
 
@@ -11,9 +11,27 @@ export const Navbar = () => {
     const [isTelMenuOpen, setIsTelMenuOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isLogin, setIsLogin] = useState(false); // เก็บไว้ใช้ภายหลัง
+    const [username , setUsername] = useState("");
     const location = useLocation();
 
+    useEffect(() => {
+        const token = localStorage.getItem('accessToken');
+        const username = localStorage.getItem('userName')
+        if(username) setUsername(username)
+        if(token) {
+            setIsLogin(true);
+        }
+    }, [])
+
     const isActive = (path: string) => location.pathname === path;
+
+    const handleLogout = () => {
+        setIsLogin(false); 
+        setIsProfileOpen(false); 
+        localStorage.removeItem('accessToken'); 
+        localStorage.removeItem('userName')
+        window.location.href = '/'
+    }
 
     return (
         <nav className="relative bg-[#1A1A1C] ">
@@ -58,16 +76,15 @@ export const Navbar = () => {
                     <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                         <div className="relative ml-3">
 
-                           {isLogin ? (
+                            {isLogin ? (
                                 <UserProfile
-                                    isOpen={isProfileOpen} 
-                                    onToggle={() => setIsProfileOpen(!isProfileOpen)} 
-                                    onLogout={() => { setIsLogin(!isLogin); setIsProfileOpen(false); }}
+                                    isOpen={isProfileOpen}
+                                    onToggle={() => setIsProfileOpen(!isProfileOpen)}
+                                    onLogout={handleLogout }
+                                    username={username}
                                 />
                             ) : (
-                                <SignInButton  
-                                onLogin={setIsLogin(!isLogin)}
-                                />
+                                <SignInButton/>
                             )}
 
                         </div>
