@@ -16,24 +16,28 @@ export const CustomPage = () => {
 
     const { userInput, totalKeystrokes, errorCount, errorIndex, wrongWords, resetTyping } = useTyping(isGameReady && customText ? customText : "")
 
+    //เมื่อพิมพ์ครบคำที่ตั้งไว้จะบันทึกเวลา
     useEffect(() => {
         if (customText && isGameReady && userInput.length === customText.length) {
             finishGame();
         }
     }, [userInput.length, customText, isGameReady, finishGame]);
 
+    //ปุ่ม Start
     const handleStartCustomGame = (text: string) => {
         setWords(text);
         restartGame();
         resetTyping();
     };
 
+    //ปุ่มเปลี่ยนคำเมื่อเล่นเสร็จ
     const handleChangeText = () => {
         clearWords();
         restartGame();
         resetTyping();
     }
 
+    //ดปุ่ม play again
     const handlePlayAgain = () => {
         if (customText) handleStartCustomGame(customText);
     };
@@ -89,7 +93,6 @@ export const CustomPage = () => {
                         )}
                     </div>
                 )}
-
             </main>
         </div>
     );

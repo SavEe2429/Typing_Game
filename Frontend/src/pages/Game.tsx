@@ -18,7 +18,7 @@ export const GamePage = () => {
         }
     }, [userInput, words, finishGame])
 
-    //เมื่อกดปุ่ม play again
+    //ปุ่ม play again
     const handlePlayAgain = () => {
         restartGame();
         resetTyping();
