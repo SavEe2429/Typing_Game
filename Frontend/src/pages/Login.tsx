@@ -17,6 +17,7 @@ export const LoginPage = () => {
         console.log("Login Successed", res.data);
         localStorage.setItem('accessToken', res.data.token);
         localStorage.setItem('userName',res.data.user.username);
+        localStorage.setItem('Role',res.data.user.role);
         navigate('/');
       }
     } catch (err: any) {

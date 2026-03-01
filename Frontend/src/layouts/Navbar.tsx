@@ -30,6 +30,7 @@ export const Navbar = () => {
         setIsProfileOpen(false); 
         localStorage.removeItem('accessToken'); 
         localStorage.removeItem('userName')
+        localStorage.removeItem('Role')
         window.location.href = '/'
     }
 
