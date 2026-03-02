@@ -50,7 +50,6 @@ export const GamePage = () => {
                     {/* ส่งค่าไปให้ summary เมื่อจบเกม */}
                     {endTime && startTime ? (
                         <Summary
-                            userInput={userInput}
                             targetWords={targetWord}
                             totalKeystrokes={totalKeystrokes}
                             errorCount={errorCount}
