@@ -9,10 +9,22 @@ import { Localfile } from "../components/LocalStorage";
 
 export const GamePage = () => {
 
+    const { words, 
+        countdown, 
+        isGameReady, 
+        startTime, 
+        endTime, 
+        finishGame, 
+        restartGame } = useGameEngine(25);
 
-    const { words, countdown, isGameReady, startTime, endTime, finishGame, restartGame } = useGameEngine(25);
     const targetText = words.join(" ");
-    const { userInput, totalKeystrokes, errorCount, errorIndex, wrongWords, resetTyping } = useTyping(isGameReady ? targetText : "");
+
+    const { userInput, 
+        totalKeystrokes, 
+        errorCount, errorIndex, 
+        wrongWords, 
+        resetTyping } = useTyping(isGameReady ? targetText : "");
+        
     const { username } = Localfile()
 
     //เมื่อพิมพ์ครบ 25 คำ จะบันทึกเวลา

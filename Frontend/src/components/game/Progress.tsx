@@ -3,7 +3,7 @@ import { useMemo } from "react";
 export const ProgressBar = ({
     currentLength,
     totalLength,
-    playerName = "Player1"
+    playerName = "Guest"
 }: {
     currentLength: number;
     totalLength: number;

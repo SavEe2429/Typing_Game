@@ -6,12 +6,6 @@ export const TrackPage = () => {
 
     const [activeTab, setActiveTab] = useState("word");
 
-    // const tabClass = (tab: string) =>
-    //     `py-2 font-semibold text-lg transition ${activeTab === tab
-    //         ? "bg-[#2A2A2E] text-white border-t-4 border-indigo-600"
-    //         : "bg-[#2A2A2E] text-gray-400 hover:border-t-4 hover:border-indigo-600"
-    //     }`;
-
     const tabClass = (tab: string) => {
         const base = "py-1 font-semibold text-md transition-all duration-300 outline-none";
         // สีตอนที่กดเลือก (กลืนไปกับพื้นหลังเนื้อหา)

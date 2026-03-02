@@ -66,6 +66,7 @@ export const CustomPage = () => {
                                     startTime={startTime}
                                     endTime={endTime}
                                     onRestart={handlePlayAgain}
+                                    disableSave={true}
                                 />
                                 <button
                                     onClick={handleChangeText}
