@@ -1,25 +1,24 @@
-import { api } from "../api/axios";
-import type { TrackedWord } from "./useWordList";
+import { useState } from 'react';
+import { api } from '../api/axios';
 
-export const useDeleteWord = (
-    setWordlist: React.Dispatch<React.SetStateAction<TrackedWord[]>>
-) => {
+export const useDeleteWord = (setWordlist: any) => {
+    const [isDeleting, setIsDeleting] = useState(false);
 
     const deleteWord = async (id: string) => {
+        setIsDeleting(true);
         try {
-            await api.delete(`/track/delete/${id}`);
+            await api.delete(`/tracks/${id}`);
 
-            setWordlist(prev =>
-                prev.filter(word => word._id !== id)
-            );
+            setWordlist((prev: any[]) => prev.filter((item: any) => item._id !== id));
 
-            alert("Word deleted successfully");
-
-        } catch (err: any) {
-            alert("Delete failed");
-            console.error(err);
+            return true;
+        } catch (error) {
+            console.error("Cannot Deleted:", error);
+            return false;
+        } finally {
+            setIsDeleting(false);
         }
     };
 
-    return { deleteWord };
+    return { deleteWord, isDeleting };
 };

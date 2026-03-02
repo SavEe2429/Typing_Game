@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { AddWord } from "./AddWord";
 import { WordList } from "./WordList";
+import { AddWord } from "./AddWord";
+import { useWordList } from "../../hooks/useWordList";
 
 export const TrackPage = () => {
 
     const [activeTab, setActiveTab] = useState("word");
+
+    const { setWordlist } = useWordList();
 
     const tabClass = (tab: string) => {
         const base = "py-1 font-semibold text-md transition-all duration-300 outline-none";
@@ -38,7 +41,7 @@ export const TrackPage = () => {
                 {/* CONTENT SWITCH */}
                 <div>
                     {activeTab === "word" && <WordList />}
-                    {activeTab === "add" && <AddWord />}
+                    {activeTab === "add" && <AddWord setWordlist={setWordlist} />}
                 </div>
             </main>
         </div>

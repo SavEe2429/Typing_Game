@@ -22,7 +22,7 @@ conn();
 
 app.use('/api' , authRoutes);
 app.use('/api' , trackRoutes);
-app.use('/api', performRoutes)
+app.use('/api', performRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT , () => console.log(`Server running on port : ${PORT}`));

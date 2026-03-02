@@ -1,31 +1,33 @@
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { wordSchema, type WordForm } from "../schemas";
+import { wordSchema, type WordForm } from "../schemas/index"; // Import จากไฟล์ที่คุณเพิ่งโชว์
 import { api } from "../api/axios";
 
-export const useAddWord = () => {
-    const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<WordForm>({
-        resolver: zodResolver(wordSchema)
+export const useAddWord = (setWordlist: any) => {
+    const {
+        register,
+        handleSubmit,
+        reset,
+        setError,
+        formState: { errors, isSubmitting }
+    } = useForm<WordForm>({
+        resolver: zodResolver(wordSchema) 
     });
 
     const onSubmit = async (data: WordForm) => {
         try {
-            await api.post('/track/add', { text: data.text });
-
-            alert(`Add Words Successfully`);
-            console.log("Add Words: ", data.text)
-            reset();
+            const response = await api.post("/tracks/add", { word: data.word });
+            
+            // อัปเดตรายชื่อที่หน้าจอ (WordList)
+            const newWord = response.data.data;
+            setWordlist((prev: any[]) => [newWord, ...prev]);
+            
+            reset(); // ล้างช่อง Textarea
         } catch (err: any) {
-            const message = "Add Words Failed";
-            alert(message);
+            const serverError = err.response?.data?.error || "Add Word Failed";
+            setError("word", { message: serverError });
         }
-    }
-
-    return {
-        register,
-        handleSubmit,
-        onSubmit,
-        errors,
-        isSubmitting
     };
+
+    return { register, handleSubmit, onSubmit, errors, isSubmitting };
 };

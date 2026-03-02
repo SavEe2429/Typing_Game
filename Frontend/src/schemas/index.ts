@@ -25,7 +25,7 @@ export const gameSchema = z.object({
 });
 
 export const wordSchema = z.object({
-    text: z.string().min(1, "Please put some word")
+    word: z.string().min(1, "Please put some word")
 })
 
 export type LoginForm = z.infer<typeof loginSchema>

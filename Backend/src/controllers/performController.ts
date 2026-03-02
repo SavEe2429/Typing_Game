@@ -5,22 +5,22 @@ const service = new PerformanceService();
 
 export class PerformanceController {
 
-    static async getPerformance(req: Request, res: Response) {
-        try {
-            const { userEmail, wpm, accuracy, duration, mode  } = req.body;
+  static async getPerformance(req: Request, res: Response) {
+    try {
+      const { userEmail, wpm, accuracy, duration, mode } = req.body;
 
-            const result = await service.savePerformance({
-                userEmail,
-                wpm,
-                accuracy,
-                duration,
-                mode
-            });
+      const result = await service.savePerformance({
+        userEmail,
+        wpm,
+        accuracy,
+        duration,
+        mode
+      });
 
-            res.status(201).json(result);
-        } catch (error: any) {
-            console.error(error);
-            res.status(500).json({ error: error.message || 'Cannot save performance' });
-        }
+      res.status(201).json(result);
+    } catch (error: any) {
+      console.error(error);
+      res.status(500).json({ error: error.message || 'Cannot save performance' });
     }
+  }
 }

@@ -2,10 +2,10 @@ import { useDeleteWord } from "../../hooks/useDeleteWord";
 import { useWordList } from "../../hooks/useWordList";
 
 export const WordList = () => {
-    const { Wordlist, setWordlist, loading } = useWordList();
+    const { Wordlist, setWordlist, isLoading } = useWordList();
     const { deleteWord } = useDeleteWord(setWordlist);
 
-    if (loading) {
+    if (isLoading) {
         return (
             <div className="w-full flex justify-center py-20">
                 <div className="text-indigo-400 animate-pulse font-bold tracking-widest">LOADING WORDS...</div>
@@ -30,12 +30,13 @@ export const WordList = () => {
                             className="group relative flex justify-center items-center bg-[#1A1A1C] p-3 rounded-xl border border-white/5 "
                         >
                             <span className="text-gray-300 font-medium truncate">
-                                {word.text}
+                                {word.word}
                             </span>
 
                             {/* DELETE BUTTON */}
                             <button
-                                onClick={() => deleteWord(word._id)}
+                                onClick={() => deleteWord(word._id)
+                                }
                                 className="absolute top-1/2 right-2 -translate-y-1/2 text-xs px-2 py-1  hover:bg-red-400 rounded-lg text-white">✕</button>
                         </div>
                     ))}

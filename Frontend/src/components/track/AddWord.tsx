@@ -1,7 +1,8 @@
 import { useAddWord } from "../../hooks/useAddWord";
 
-export const AddWord = () => {
-  const { register, handleSubmit, onSubmit, errors, isSubmitting } = useAddWord();
+
+export const AddWord = ({ setWordlist }: { setWordlist: any }) => {
+  const { register, handleSubmit, onSubmit, errors, isSubmitting } = useAddWord(setWordlist);
 
   return (
     <div className="flex flex-col w-full">
@@ -13,14 +14,14 @@ export const AddWord = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="w-full">
 
           <textarea
-            {...register('text')}
+            {...register('word')}
             disabled={isSubmitting}
-            className={`w-full h-48 bg-[#1A1A1C] text-gray-300 border ${errors.text ? 'border-red-500' : 'border-gray-700'} rounded-xl p-4 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 font-mono resize-none transition-all`}
+            className={`w-full h-48 bg-[#1A1A1C] text-gray-300 border ${errors.word ? 'border-red-500' : 'border-gray-700'} rounded-xl p-4 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 font-mono resize-none transition-all`}
             placeholder="e.g. keyboard, mouse, headphone..."
           />
 
           <div className="min-h-[24px] mt-2 mb-2">
-            {errors.text && <p className="text-red-400 text-sm font-bold">* {errors.text.message}</p>}
+            {errors.word && <p className="text-red-400 text-sm font-bold">* {errors.word.message}</p>}
           </div>
 
           <div className="flex justify-center">
