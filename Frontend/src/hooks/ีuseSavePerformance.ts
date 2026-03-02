@@ -15,10 +15,6 @@ export const useSaveScore = (
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        console.log("EMAIL:", email);
-        console.log("username", username)
-        console.log("HAS SAVED:", hasSaved.current);
-        
         if (disableSave) return;
 
         const saveScore = async () => {

@@ -1,18 +1,18 @@
 const UserTyping = ({
-  targetText,
+  targetWord,
   userInput,
   errorIndex
 }: {
-  targetText: string;
+  targetWord: string;
   userInput: string;
   errorIndex?: number | null;
 }) => {
 
-  const characters = targetText.split("");
+  const words = targetWord.split("");
 
   return (
     <div className="text-2xl font-mono leading-relaxed select-none">
-      {characters.map((char, index) => {
+      {words.map((char, index) => {
 
         let colorInput = "text-gray-400";
 

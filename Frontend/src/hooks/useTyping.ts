@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 
-export const useTyping = (targetText: string) => {
+export const useTyping = (targetWord: string) => {
   const [userInput, setUserInput] = useState<string>('')
 
   // state เอาไว้สำหรับเก็บจำนวนครั้งที่กดคีย์บอร์ด เพื่อคำนวน mistake
@@ -11,7 +11,7 @@ export const useTyping = (targetText: string) => {
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
 
-    if (!targetText) return
+    if (!targetWord) return
 
     //ป้องกันการเลื่อนหน้าจอเมื่อกด Spacebar
     if (e.key === ' ') {
@@ -19,8 +19,8 @@ export const useTyping = (targetText: string) => {
     }
 
     if (e.key.length === 1) {
-      if (userInput.length < targetText.length) {
-        const expectedChar = targetText[userInput.length]
+      if (userInput.length < targetWord.length) {
+        const expectedChar = targetWord[userInput.length]
 
         setTotalKeystrokes((prev) => prev + 1)
 
@@ -43,7 +43,7 @@ export const useTyping = (targetText: string) => {
 
       }
     }
-  }, [targetText, userInput.length]);
+  }, [targetWord, userInput.length]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);

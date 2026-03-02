@@ -38,7 +38,7 @@ export const Summary = ({
 
   const { email, username } = Localfile();
 
-  useSaveScore(email,username , wpm, acc, time_sec, gameMode, disableSave);
+  useSaveScore(email, username, wpm, acc, time_sec, gameMode, disableSave);
 
   return (
     <div className="flex flex-col items-center justify-center w-full max-w-6xl px-6 sm:px-8 animate-in fade-in zoom-in duration-500 pb-6 lg:pb-10">
@@ -62,7 +62,7 @@ export const Summary = ({
             wrongWords={wrongWords} />
         </div>
       </div>
-      
+
       <div className="mt-6 lg:mt-12 flex gap-4">
         <RestartButton onRestart={onRestart} />
       </div>

@@ -14,7 +14,7 @@ export const TypingBoard = ({
 
             <div className="text-xl sm:text-2xl font-mono leading-relaxed tracking-wide relative">
                 <UserTyping
-                    targetText={words}
+                    targetWord={words}
                     userInput={userInput}
                     errorIndex={errorIndex}
                 />
