@@ -4,7 +4,7 @@ import StatisticCard from "./StatisticCard";
 
 interface SummaryProps {
   userInput: string;
-  targetText: string;
+  targetWords: string;
   totalKeystrokes: number;
   errorCount: number;
   wrongWords: number[];
@@ -15,7 +15,7 @@ interface SummaryProps {
 
 export const Summary = ({
   userInput,
-  targetText,
+  targetWords,
   totalKeystrokes,
   errorCount,
   wrongWords,
@@ -27,7 +27,6 @@ export const Summary = ({
   const wpm = time_sec > 0 ? Math.round((userInput.length / 5) / (time_sec / 60)) : 0;
   const acc = totalKeystrokes > 0 ? Math.round(((totalKeystrokes - errorCount) / totalKeystrokes) * 100) : 0;
 
-  const targetWords = targetText.split(' ');
   //ใช้ set เพื่อที่จะไม่เก็บ array  ซ้ำ
   const MistakesWords = new Set(wrongWords).size;
 
@@ -49,7 +48,7 @@ export const Summary = ({
         {/* MatchView */}
         <div className="col-span-1 lg:col-span-2 lg:h-full ">
           <MatchView
-            targetWords={targetWords}
+            targetWords={targetWords.split(" ")}
             wrongWords={wrongWords} />
         </div>
       </div>

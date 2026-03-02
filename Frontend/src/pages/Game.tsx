@@ -5,18 +5,24 @@ import { ProgressBar } from "../components/game/Progress";
 import { TypingBoard } from "../components/game/TypingBoard";
 import { CountdownTimer } from "../components/game/CountdownTimer";
 import { Summary } from "../components/summary/Summary";
+import { Localfile } from "../components/LocalStorage";
 
 export const GamePage = () => {
 
+
     const { words, countdown, isGameReady, startTime, endTime, finishGame, restartGame } = useGameEngine(25);
-    const { userInput, totalKeystrokes, errorCount, errorIndex, wrongWords, resetTyping } = useTyping(isGameReady ? words : "");
+    const targetText = words.join(" ");
+    const { userInput, totalKeystrokes, errorCount, errorIndex, wrongWords, resetTyping } = useTyping(isGameReady ? targetText : "");
+    const { username } = Localfile()
 
     //เมื่อพิมพ์ครบ 25 คำ จะบันทึกเวลา
     useEffect(() => {
-        if (userInput.length === words.length) {
+        if (isGameReady &&
+            targetText.length > 0 &&
+            userInput.length === targetText.length) {
             finishGame()
         }
-    }, [userInput, words, finishGame])
+    }, [userInput, targetText, finishGame])
 
     //ปุ่ม play again
     const handlePlayAgain = () => {
@@ -33,7 +39,7 @@ export const GamePage = () => {
                     {endTime && startTime ? (
                         <Summary
                             userInput={userInput}
-                            targetText={words}
+                            targetWords={targetText}
                             totalKeystrokes={totalKeystrokes}
                             errorCount={errorCount}
                             wrongWords={wrongWords}
@@ -51,14 +57,14 @@ export const GamePage = () => {
 
                             <div className="flex flex-col w-full max-w-4xl gap-4 px-4">
                                 <TypingBoard
-                                    words={words}
+                                    words={targetText}
                                     userInput={userInput}
                                     errorIndex={errorIndex}
                                 />
                                 <ProgressBar
                                     currentLength={userInput.length}
-                                    totalLength={words.length}
-                                    playerName="Player 1"
+                                    totalLength={targetText.length}
+                                    playerName={username}
                                 />
                             </div>
                         </div>

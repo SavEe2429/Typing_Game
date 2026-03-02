@@ -1,24 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { UserProfile, SignInButton } from "../components/common/ButtonNav";
-import { set } from "zod";
-
-
+import { Localfile } from "../components/LocalStorage";
 
 export const Navbar = () => {
     const [isTelMenuOpen, setIsTelMenuOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isLogin, setIsLogin] = useState(false); // เก็บไว้ใช้ภายหลัง
-    const [username, setUsername] = useState("");
-    const [role, setRole] = useState("");
     const location = useLocation();
+    const { token, username, role } = Localfile();
 
     useEffect(() => {
-        const token = localStorage.getItem('accessToken');
-        const username = localStorage.getItem('userName')
-        const role = localStorage.getItem('Role')
-        if (role) setRole(role);
-        if (username) setUsername(username);
         if (token) {
             setIsLogin(true);
         }
@@ -31,7 +23,10 @@ export const Navbar = () => {
     ];
 
 
-    const isActive = (path: string) => location.pathname === path;
+    const isActive = (path: string) => {
+        if (path === "/") return location.pathname === "/";
+        return location.pathname.startsWith(path);
+    };
 
     const handleLogout = () => {
         setIsLogin(false);

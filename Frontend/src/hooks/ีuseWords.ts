@@ -1,16 +1,33 @@
-import { faker } from "@faker-js/faker";
-import { useCallback, useState } from "react";
-
-const generateWords = (count: number) => {
-    return faker.word.words(count)
-}
+import { useCallback, useEffect, useState } from "react";
+import { api } from "../api/axios";
 
 export const useWords = (count: number) => {
-    const [words, setWords] = useState<string>(generateWords(count))
+    const [words, setWords] = useState<string[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    const updateWords = useCallback(() => {
-        setWords(generateWords(count));
+    const fetchWords = useCallback(async () => {
+        try {
+            setLoading(true);
+
+            const res = await api.get("/track/generatewords");
+
+            // backend ส่ง { words: [] }
+            setWords(res.data.words.slice(0, count));
+
+        } catch (err) {
+            console.error("Fetch words failed", err);
+        } finally {
+            setLoading(false);
+        }
     }, [count]);
 
-    return { words, updateWords };
+    useEffect(() => {
+        fetchWords();
+    }, [fetchWords]);
+
+    return {
+        words,
+        loading,
+        updateWords: fetchWords
+    };
 }

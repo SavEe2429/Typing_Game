@@ -33,6 +33,8 @@ services:
       - "5173:5173"
     environment:
       - VITE_WATCH_USEPOLLING=true # เพิ่มบรรทัดนี้: บังคับให้ Vite ตรวจเช็คไฟล์ใหม่ตลอดเวลา (แก้ปัญหาแก้โค้ดแล้วหน้าเว็บไม่รีเฟรช)
+      - VITE_API_URL=http://localhost:5000/api
+      
     stdin_open: true 
     tty: true # เพิ่มบรรทัดนี้: ทำงานคู่กับ stdin_open เพื่อให้ Terminal ของ Vite เสถียรขึ้น
     depends_on:

@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
-import router from "./routes/authRoutes";
+import authRoutes from "./routes/authRoutes";
+import trackRoutes from "./routes/trackRoutes"
 import dotenv from 'dotenv'
 import {conn} from './config/db'
 
@@ -18,7 +19,8 @@ app.use(express.json());
 // connect db
 conn();
 
-app.use('/api' , router);
+app.use('/api' , authRoutes);
+app.use('/api' , trackRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT , () => console.log(`Server running on port : ${PORT}`));

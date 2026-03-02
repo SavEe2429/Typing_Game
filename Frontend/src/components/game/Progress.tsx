@@ -7,7 +7,7 @@ export const ProgressBar = ({
 }: {
     currentLength: number;
     totalLength: number;
-    playerName: string;
+    playerName: string | null;
 }) => {
 
     // คำนวณ Progress เป็น %

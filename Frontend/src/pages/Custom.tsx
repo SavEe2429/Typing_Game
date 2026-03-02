@@ -7,6 +7,7 @@ import { useTyping } from "../hooks/useTyping";
 import { TypingBoard } from "../components/game/TypingBoard";
 import { useCustomWords } from "../hooks/useCustomWords";
 import { useCustomEngine } from "../hooks/useCustomEngine";
+import { Localfile } from "../components/LocalStorage";
 
 export const CustomPage = () => {
 
@@ -15,6 +16,8 @@ export const CustomPage = () => {
     const { countdown, isGameReady, startTime, endTime, finishGame, restartGame } = useCustomEngine(customText)
 
     const { userInput, totalKeystrokes, errorCount, errorIndex, wrongWords, resetTyping } = useTyping(isGameReady && customText ? customText : "")
+
+    const { username } = Localfile()
 
     //เมื่อพิมพ์ครบคำที่ตั้งไว้จะบันทึกเวลา
     useEffect(() => {
@@ -56,7 +59,7 @@ export const CustomPage = () => {
                             <div className="flex flex-col items-center">
                                 <Summary
                                     userInput={userInput}
-                                    targetText={customText}
+                                    targetWords={customText}
                                     totalKeystrokes={totalKeystrokes}
                                     errorCount={errorCount}
                                     wrongWords={wrongWords}
@@ -86,7 +89,7 @@ export const CustomPage = () => {
                                     <ProgressBar
                                         currentLength={userInput.length}
                                         totalLength={customText.length}
-                                        playerName="Player 1"
+                                        playerName={username}
                                     />
                                 </div>
                             </div>

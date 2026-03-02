@@ -10,6 +10,8 @@ import { RegisterPage } from './pages/Register'
 import { ForgetPassPage } from './pages/ForgetPass'
 import { AuthLayout } from './layouts/AuthLayout'
 import { DashBoardPage } from './pages/DashBoard'
+import { PlayerPage } from './components/Player'
+import { TrackPage } from './components/track/TrackPage'
 
 
 function App() {
@@ -24,9 +26,14 @@ function App() {
         <Route path='game' element={<GamePage />} />
         <Route path='profile' element={<ProfilePage />} />
         <Route path='custom' element={<CustomPage />} />
-        <Route path='dashboard' element={<DashBoardPage />} />
+        <Route path='dashboard' element={<DashBoardPage />}>
+          <Route index element={<PlayerPage />} />
+          <Route path='player' element={<PlayerPage />} />
+          <Route path='track' element={<TrackPage />} />
 
+        </Route>
       </Route>
+
 
       {/* ถ้ามีหน้าไหนที่ไม่เอา Navbar/Footer (เช่นหน้า Login) ให้ไว้นอกกลุ่มนี้ */}
       <Route path='/auth' element={<AuthLayout />}>
