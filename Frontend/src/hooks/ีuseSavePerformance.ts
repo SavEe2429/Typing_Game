@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { savePerformanceData } from "../services/performanceService";
 
 export const useSaveScore = (
+    email: string | null | undefined,
     username: string | null | undefined,
     wpm: number,
     acc: number,
@@ -14,16 +15,20 @@ export const useSaveScore = (
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        console.log("EMAIL:", email);
+        console.log("username", username)
+        console.log("HAS SAVED:", hasSaved.current);
+        
         if (disableSave) return;
 
         const saveScore = async () => {
-            if (username && time_sec > 0 && !hasSaved.current) {
+            if (email && username && time_sec > 0 && !hasSaved.current) {
                 hasSaved.current = true;
                 setIsSaving(true);
                 try {
-                    await savePerformanceData(username, wpm, acc, time_sec, mode);
+                    await savePerformanceData(email, username, wpm, acc, time_sec, mode);
 
-                    hasSaved.current = true; // ล็อคว่าเซฟแล้ว
+                    hasSaved.current = true;
                 } catch (err: any) {
                     console.error("Error:", err);
                     setError(err.message || "Failed to save score");
@@ -34,7 +39,7 @@ export const useSaveScore = (
         };
 
         saveScore();
-    }, [username, wpm, acc, time_sec, mode]);
+    }, [email, username, wpm, acc, time_sec, mode]);
 
     return { isSaving, error };
 };

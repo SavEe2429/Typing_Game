@@ -7,10 +7,11 @@ export class PerformanceController {
 
   static async getPerformance(req: Request, res: Response) {
     try {
-      const { userEmail, wpm, accuracy, duration, mode } = req.body;
+      const { userEmail, username, wpm, accuracy, duration, mode } = req.body;
 
       const result = await service.savePerformance({
         userEmail,
+        username,
         wpm,
         accuracy,
         duration,

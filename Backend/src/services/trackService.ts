@@ -15,15 +15,30 @@ export class TrackService {
             throw new Error('Please put a word');
         }
 
-        const cleanWord = word.trim().toLowerCase();
+        // แยกคำจาก space / newline
+        const words = word
+            .split(/\s+/)
+            .map(w => w.trim().toLowerCase())
+            .filter(w => w !== "");
 
-        //เช็คคำซ้ำใน Database
-        const isExist = await repo.findByWord(cleanWord);
-        if (isExist) {
-            throw new Error(`This word is already in database`);
+        // กัน duplicate ใน request เดียวกัน
+        const uniqueWords = [...new Set(words)];
+
+        const results = [];
+
+        for (const w of uniqueWords) {
+            const isExist = await repo.findByWord(w);
+
+            if (isExist) {
+                console.log("Skip duplicate:", w);
+                continue;
+            }
+
+            const created = await repo.create(w);
+            results.push(created);
         }
 
-        return await repo.create(cleanWord);
+        return results;
     }
 
     async deleteWord(id: string) {

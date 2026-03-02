@@ -9,4 +9,6 @@ router.post('/tracks/add', TrackController.addTrack);
 
 router.delete('/tracks/:id', TrackController.deleteTrack);
 
+router.get('/tracks/generatewords', TrackController.generateWords);
+
 export default router;

@@ -3,6 +3,7 @@ import mongoose, { Schema } from "mongoose";
 
 export interface IPerformanceSchema {
     userEmail: string;
+    username: string;
     wpm: number;
     accuracy: number;
     duration: number;
@@ -10,7 +11,8 @@ export interface IPerformanceSchema {
 }
 
 const PerformanceSchema = new Schema<IPerformanceSchema>({
-    userEmail: { type: String, required: true },
+    userEmail: { type: String, required: true, unique: true},
+    username: {type: String, required: true},
     wpm: { type: Number, required: true },
     accuracy: { type: Number, required: true },
     duration: { type: Number, required: true},

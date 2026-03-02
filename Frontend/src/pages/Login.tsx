@@ -18,6 +18,7 @@ export const LoginPage = () => {
         localStorage.setItem('accessToken', res.data.token);
         localStorage.setItem('userName',res.data.user.username);
         localStorage.setItem('Role',res.data.user.role);
+        localStorage.setItem('email', res.data.user.email);
         navigate('/');
       }
     } catch (err: any) {

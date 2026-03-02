@@ -31,9 +31,10 @@ export const Navbar = () => {
     const handleLogout = () => {
         setIsLogin(false);
         setIsProfileOpen(false);
-        localStorage.removeItem('accessToken');
+        localStorage.removeItem('accessToken')
         localStorage.removeItem('userName')
         localStorage.removeItem('Role')
+        localStorage.removeItem('email')
         window.location.href = '/'
     }
 

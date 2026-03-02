@@ -9,7 +9,7 @@ export const useWords = (count: number) => {
         try {
             setLoading(true);
 
-            const res = await api.get("/track/generatewords");
+            const res = await api.get(`/tracks/generatewords?amount=${count}`);
 
             // backend ส่ง { words: [] }
             setWords(res.data.words.slice(0, count));

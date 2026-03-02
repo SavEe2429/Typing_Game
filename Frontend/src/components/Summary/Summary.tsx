@@ -36,9 +36,9 @@ export const Summary = ({
   //ใช้ set เพื่อที่จะไม่เก็บ array  ซ้ำ
   const MistakesWords = new Set(wrongWords).size;
 
-  const { username } = Localfile();
+  const { email, username } = Localfile();
 
-  useSaveScore(username, wpm, acc, time_sec, gameMode, disableSave);
+  useSaveScore(email,username , wpm, acc, time_sec, gameMode, disableSave);
 
   return (
     <div className="flex flex-col items-center justify-center w-full max-w-6xl px-6 sm:px-8 animate-in fade-in zoom-in duration-500 pb-6 lg:pb-10">

@@ -11,17 +11,18 @@ export const useAddWord = (setWordlist: any) => {
         setError,
         formState: { errors, isSubmitting }
     } = useForm<WordForm>({
-        resolver: zodResolver(wordSchema) 
+        resolver: zodResolver(wordSchema)
     });
 
     const onSubmit = async (data: WordForm) => {
         try {
             const response = await api.post("/tracks/add", { word: data.word });
-            
-            // อัปเดตรายชื่อที่หน้าจอ (WordList)
-            const newWord = response.data.data;
-            setWordlist((prev: any[]) => [newWord, ...prev]);
-            
+
+            const newWords = response.data.data;
+
+            // merge ทีละคำ
+            setWordlist((prev: any[]) => [...newWords, ...prev]);
+
             reset(); // ล้างช่อง Textarea
         } catch (err: any) {
             const serverError = err.response?.data?.error || "Add Word Failed";
