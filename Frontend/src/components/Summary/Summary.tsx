@@ -30,7 +30,7 @@ export const Summary = ({
   disableSave = false
 }: SummaryProps) => {
   const time_sec = (endTime - startTime) / 1000;
-  const wpm = time_sec > 0 ? Math.round((userInput.length / 5) / (time_sec / 60)) : 0;
+  const wpm = time_sec > 0 ? Math.round(((totalKeystrokes / 5) - errorCount) / (time_sec / 60)) : 0;
   const acc = totalKeystrokes > 0 ? Math.round(((totalKeystrokes - errorCount) / totalKeystrokes) * 100) : 0;
 
   //ใช้ set เพื่อที่จะไม่เก็บ array  ซ้ำ
