@@ -58,7 +58,6 @@ export const CustomPage = () => {
                         {endTime && startTime ? (
                             <div className="flex flex-col items-center">
                                 <Summary
-                                    userInput={userInput}
                                     targetWords={customText}
                                     totalKeystrokes={totalKeystrokes}
                                     errorCount={errorCount}

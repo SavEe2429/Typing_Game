@@ -17,24 +17,24 @@ export const GamePage = () => {
         finishGame, 
         restartGame } = useGameEngine(25);
 
-    const targetText = words.join(" ");
+    const targetWord = words.join(" ");
 
     const { userInput, 
         totalKeystrokes, 
         errorCount, errorIndex, 
         wrongWords, 
-        resetTyping } = useTyping(isGameReady ? targetText : "");
+        resetTyping } = useTyping(isGameReady ? targetWord : "");
         
     const { username } = Localfile()
 
     //เมื่อพิมพ์ครบ 25 คำ จะบันทึกเวลา
     useEffect(() => {
         if (isGameReady &&
-            targetText.length > 0 &&
-            userInput.length === targetText.length) {
+            targetWord.length > 0 &&
+            userInput.length === targetWord.length) {
             finishGame()
         }
-    }, [userInput, targetText, finishGame])
+    }, [userInput, targetWord, finishGame])
 
     //ปุ่ม play again
     const handlePlayAgain = () => {
@@ -50,8 +50,7 @@ export const GamePage = () => {
                     {/* ส่งค่าไปให้ summary เมื่อจบเกม */}
                     {endTime && startTime ? (
                         <Summary
-                            userInput={userInput}
-                            targetWords={targetText}
+                            targetWords={targetWord}
                             totalKeystrokes={totalKeystrokes}
                             errorCount={errorCount}
                             wrongWords={wrongWords}
@@ -69,13 +68,13 @@ export const GamePage = () => {
 
                             <div className="flex flex-col w-full max-w-4xl gap-4 px-4">
                                 <TypingBoard
-                                    words={targetText}
+                                    words={targetWord}
                                     userInput={userInput}
                                     errorIndex={errorIndex}
                                 />
                                 <ProgressBar
                                     currentLength={userInput.length}
-                                    totalLength={targetText.length}
+                                    totalLength={targetWord.length}
                                     playerName={username}
                                 />
                             </div>

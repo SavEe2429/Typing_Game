@@ -11,7 +11,7 @@ export interface IPerformanceSchema {
 }
 
 const PerformanceSchema = new Schema<IPerformanceSchema>({
-    userEmail: { type: String, required: true, unique: true},
+    userEmail: { type: String, required: true},
     username: {type: String, required: true},
     wpm: { type: Number, required: true },
     accuracy: { type: Number, required: true },

@@ -5,7 +5,6 @@ import MatchView from "./MatchView";
 import StatisticCard from "./StatisticCard";
 
 interface SummaryProps {
-  userInput: string;
   targetWords: string;
   totalKeystrokes: number;
   errorCount: number;
@@ -18,7 +17,6 @@ interface SummaryProps {
 }
 
 export const Summary = ({
-  userInput,
   targetWords,
   totalKeystrokes,
   errorCount,
@@ -30,7 +28,8 @@ export const Summary = ({
   disableSave = false
 }: SummaryProps) => {
   const time_sec = (endTime - startTime) / 1000;
-  const wpm = time_sec > 0 ? Math.round((userInput.length / 5) / (time_sec / 60)) : 0;
+  const rawWpm = time_sec > 0 ? Math.round(((totalKeystrokes / 5) - errorCount) / (time_sec / 60)) : 0;
+  const wpm = Math.max(0, rawWpm);
   const acc = totalKeystrokes > 0 ? Math.round(((totalKeystrokes - errorCount) / totalKeystrokes) * 100) : 0;
 
   //ใช้ set เพื่อที่จะไม่เก็บ array  ซ้ำ
@@ -38,7 +37,7 @@ export const Summary = ({
 
   const { email, username } = Localfile();
 
-  useSaveScore(email,username , wpm, acc, time_sec, gameMode, disableSave);
+  useSaveScore(email, username, wpm, acc, time_sec, gameMode, disableSave);
 
   return (
     <div className="flex flex-col items-center justify-center w-full max-w-6xl px-6 sm:px-8 animate-in fade-in zoom-in duration-500 pb-6 lg:pb-10">
@@ -62,7 +61,7 @@ export const Summary = ({
             wrongWords={wrongWords} />
         </div>
       </div>
-      
+
       <div className="mt-6 lg:mt-12 flex gap-4">
         <RestartButton onRestart={onRestart} />
       </div>
