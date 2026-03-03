@@ -30,7 +30,7 @@ export const RankingPage = () => {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-700">
-                            {performances.map((performance: any, index: number) => (
+                            {performances.slice(0, 10).map((performance: any, index: number) => (
                                 <tr key={index} className="hover:bg-gray-800/50 transition-colors">
                                     <td className='px-6 py-4 font-medium text-gray-400 hidden md:table-cell '>{index + 1}</td>
                                     <td className={`px-6 py-4 font-bold text-gray-400 md:table-cell left-0 ${index < 3 ? rankGradients[index] : ' '}`}>{performance.username}</td>

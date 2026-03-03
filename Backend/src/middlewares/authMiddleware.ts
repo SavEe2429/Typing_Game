@@ -1,4 +1,5 @@
 import {Request , Response , NextFunction } from 'express';
+import rateLimit from 'express-rate-limit';
 import jwt from 'jsonwebtoken';
 
 interface AuthRequest extends Request{
@@ -30,3 +31,12 @@ export const isAdmin = (req : AuthRequest , res : Response , next : NextFunction
         res.status(403).json({message : "Access Denined : Admin Only"})
     }
 }
+
+// สำหรับจำกัดการ Login (เข้มงวดกว่า)
+export const loginLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000, // 1 ชั่วโมง
+    max: 5, // ลองรหัสผ่านผิดได้แค่ 5 ครั้งต่อชั่วโมง
+    message: {
+        message: "Too many login attempts, please try again in an hour."
+    }
+});

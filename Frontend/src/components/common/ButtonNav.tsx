@@ -4,14 +4,14 @@ export const UserProfile = ({ isOpen, onToggle, onLogout , username}: any) => (
     <>
         <div className="flex flex-row items-center gap-4 group cursor-pointer" onClick={onToggle}>
             <div className="flex rounded-full bg-indigo-500 p-0.5 ring-2 ring-transparent group-hover:ring-indigo-400 transition-all">
-                <img className="size-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="User" />
+                <img className="size-10 rounded-full" src="https://i.pinimg.com/736x/cf/73/ab/cf73aba82b318d219e7428ea76dbc899.jpg" alt="User" />
             </div>
             <span className="text-xl font-semibold text-white hidden lg:block">{username}</span>
         </div>
         {isOpen && (
             <div className="absolute right-0 z-10 mt-3 w-56 origin-top-right rounded-xl bg-white py-2 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none overflow-hidden">
-                <Link to="/profile" onClick={onToggle} className="block px-4 py-3 text-lg text-gray-700 hover:bg-gray-100 font-medium">Your Profile</Link>
-                <hr className="border-gray-100" />
+                {/* <Link to="/profile" onClick={onToggle} className="block px-4 py-3 text-lg text-gray-700 hover:bg-gray-100 font-medium">Your Profile</Link>
+                <hr className="border-gray-100" /> */}
                 <button onClick={onLogout} className="block w-full text-left px-4 py-3 text-lg text-red-600 hover:bg-red-50 font-bold">Sign Out</button>
             </div>
         )}
