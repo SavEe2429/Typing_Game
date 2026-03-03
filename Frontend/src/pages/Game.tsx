@@ -4,7 +4,7 @@ import { useTyping } from "../hooks/useTyping";
 import { ProgressBar } from "../components/game/Progress";
 import { TypingBoard } from "../components/game/TypingBoard";
 import { CountdownTimer } from "../components/game/CountdownTimer";
-import { Summary } from "../components/summary/Summary";
+import { Summary } from "../components/Summary/Summary";
 import { Localfile } from "../components/LocalStorage";
 
 export const GamePage = () => {

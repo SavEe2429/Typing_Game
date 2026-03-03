@@ -1,16 +1,16 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { MainLayout } from './layouts/MainLayout'
 import { GamePage } from './pages/Game'
 import { RankingPage } from './pages/Ranking'
 import { ProfilePage } from './pages/Profile'
 import { HomePage } from './pages/Home'
-import { CustomPage } from './pages/Custom'
-import { LoginPage } from './pages/Login'
+import { CustomPage } from './pages/CustomPage'
+import { LoginPage } from './pages/LoginPage'
 import { RegisterPage } from './pages/Register'
 import { ForgetPassPage } from './pages/ForgetPass'
 import { AuthLayout } from './layouts/AuthLayout'
 import { DashBoardPage } from './pages/DashBoard'
-import { PlayerPage } from './components/Player'
+import { PlayerPage } from './pages/PlayerPage'
 import { TrackPage } from './components/track/TrackPage'
 
 
@@ -27,10 +27,9 @@ function App() {
         <Route path='profile' element={<ProfilePage />} />
         <Route path='custom' element={<CustomPage />} />
         <Route path='dashboard' element={<DashBoardPage />}>
-          <Route index element={<PlayerPage />} />
+          <Route index element={<Navigate to='/dashboard/player' replace/>} />
           <Route path='player' element={<PlayerPage />} />
           <Route path='track' element={<TrackPage />} />
-
         </Route>
       </Route>
 

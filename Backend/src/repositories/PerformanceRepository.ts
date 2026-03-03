@@ -7,6 +7,6 @@ export class PerformanceRepository {
     }
 
     async findAll() {
-        return await Performance.find().sort({ createdAt: -1 });
+        return await Performance.find().select('username wpm -_id').sort({ wpm: -1 }).lean();
     }
 }

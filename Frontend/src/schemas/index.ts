@@ -9,7 +9,13 @@ export const loginSchema = z.object({
 
 export const registerSchema = loginSchema.extend({
     username: z.string().min(1, 'ตั้งชื่ออย่างน้อย 1 ตัว'),
-    confirmPassword: z.string()
+    password: z.string().min(6, 'รหัสผ่านต้องมีอย่างน้อย 6 ตัว')
+        .regex(/[A-Z]/, "ต้องมีตัวพิมพ์ใหญ่อย่างน้อย 1 ตัว")
+        .regex(/[a-z]/, "ต้องมีตัวพิมพ์เล็กอย่างน้อย 1 ตัว")
+        .regex(/[0-9]/, "ต้องมีตัวเลขอย่างน้อย 1 ตัว")
+        .regex(/[!@#$%^&*(),.?":{}|<>_]/, "ต้องมีตัวอักษรพิเศษอย่างน้อย 1 ตัว"),
+    confirmPassword: z.string().min(1, "กรุณายืนยันรหัสผ่าน"),
+    role: z.enum(["USER", "ADMIN"]).optional()
 }).refine((data) => data.password === data.confirmPassword, {
     message: "รหัสผ่านไม่ถูกต้อง",
     path: ["confirmPassword"],

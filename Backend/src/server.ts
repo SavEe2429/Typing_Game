@@ -3,6 +3,7 @@ import cors from 'cors'
 import authRoutes from "./routes/authRoutes"
 import performRoutes from "./routes/performRoutes"
 import trackRoutes from "./routes/trackRoutes"
+import adminRoutes from './routes/adminRoutes'
 import dotenv from 'dotenv'
 import {conn} from './config/db'
 
@@ -20,6 +21,8 @@ app.use(express.json());
 // connect db
 conn();
 
+
+app.use('/api' , adminRoutes);
 app.use('/api' , authRoutes);
 app.use('/api' , trackRoutes);
 app.use('/api', performRoutes);

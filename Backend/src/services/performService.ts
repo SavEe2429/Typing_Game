@@ -1,12 +1,12 @@
 import { PerformanceRepository } from '../repositories/PerformanceRepository';
-import { IPerformanceSchema } from '../models/Performance';
+import {Performance,  IPerformanceSchema } from '../models/Performance';
 
 export class PerformanceService {
-    
+
     async savePerformance(data: IPerformanceSchema) {
         try {
             const repo = new PerformanceRepository();
-            
+
             if (data.wpm < 0 || data.wpm > 350) {
                 throw new Error('WPM invalid');
             }
@@ -29,5 +29,16 @@ export class PerformanceService {
             console.error('[Service Error]:', err);
             throw err; //โยน Error กลับไปให้ Controller
         }
+    }
+
+    async getPerformanceService() {
+        const repo = new PerformanceRepository();
+        const performance = await repo.findAll();
+        if (!performance) {
+            throw new Error("Fetch Error")
+        }
+
+        return  performance 
+
     }
 }

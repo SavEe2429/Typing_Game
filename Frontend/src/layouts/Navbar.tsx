@@ -44,8 +44,8 @@ export const Navbar = () => {
                 {/* เพิ่มความสูงแถวเป็น h-20 หรือ h-24 เพื่อให้รับกับฟอนต์ที่ใหญ่ขึ้น */}
                 <div className="relative flex h-24 items-center justify-between">
 
-                    {/* Mobile Button - วางชิดซ้าย (ย้ายจาก right-0 มา left-0) */}
-                    <div className="flex absolute inset-y-0 left-0 items-center pl-2 sm:hidden">
+                    {/* Telphone Button - วางชิดซ้าย (ย้ายจาก right-0 มา left-0) */}
+                    <div className="flex absolute inset-y-0 left-0 items-center pl-2 md:hidden">
                         <button onClick={() => setIsTelMenuOpen(!isTelMenuOpen)}
                             className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-none">
                             <svg className={`${isTelMenuOpen ? 'hidden' : 'block'} size-8`} fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
@@ -57,12 +57,12 @@ export const Navbar = () => {
                         </button>
                     </div>
 
-                    <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                    <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
                         <div className="flex shrink-0 items-center">
                             {/* 1. ขยายชื่อเกมเป็น text-2xl หรือ text-3xl */}
                             <span className="ml-2 text-2xl md:text-3xl font-black text-white tracking-tighter italic">TYPING GAME</span>
                         </div>
-                        <div className="hidden sm:ml-10 sm:block">
+                        <div className="hidden sm:ml-10 md:block">
                             <div className="flex space-x-6">
                                 {navItems.map((item, index: number) => (
                                     <Link
@@ -78,7 +78,7 @@ export const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto ">
                         <div className="relative ml-3">
 
                             {isLogin ? (
@@ -97,9 +97,9 @@ export const Navbar = () => {
                 </div>
             </div>
 
-            {/* Mobile menu - ขยายฟอนต์ให้กดยืนยันง่ายๆ */}
+            {/* Telphone menu - ขยายฟอนต์ให้กดยืนยันง่ายๆ */}
             {isTelMenuOpen && (
-                <div className="sm:hidden px-4 pt-2 pb-6 space-y-2 bg-[#252527] border-t border-white/5">
+                <div className="md:hidden px-4 pt-2 pb-6 space-y-2 bg-[#252527] border-t border-white/5">
                     {navItems.map((item, index: number) =>
                         <Link
                             key={index}

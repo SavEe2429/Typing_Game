@@ -10,7 +10,6 @@ export const verifyToken = (req : AuthRequest , res : Response , next : NextFunc
     const authHeader = req.headers['authorization'];
 
     const token = authHeader && authHeader.split(' ')[1]; // รับค่ารูปแบบ bearer
-
     if(!token){
         return res.status(401).json({message : "Access Denined: No Token Provided"});
     }

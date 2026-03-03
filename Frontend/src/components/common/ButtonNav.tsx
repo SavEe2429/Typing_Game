@@ -6,7 +6,7 @@ export const UserProfile = ({ isOpen, onToggle, onLogout , username}: any) => (
             <div className="flex rounded-full bg-indigo-500 p-0.5 ring-2 ring-transparent group-hover:ring-indigo-400 transition-all">
                 <img className="size-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="User" />
             </div>
-            <span className="text-xl font-semibold text-white hidden md:block">{username}</span>
+            <span className="text-xl font-semibold text-white hidden lg:block">{username}</span>
         </div>
         {isOpen && (
             <div className="absolute right-0 z-10 mt-3 w-56 origin-top-right rounded-xl bg-white py-2 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none overflow-hidden">
